@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Tank
   layers:
   - Default
   - TransparentFX
@@ -11,11 +12,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Tile
+  - Wall
   - Player
   - Enemy
-  - 
-  - 
+  - Snow
+  - Tree
   - 
   - 
   - 
@@ -41,9 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Wall
+    uniqueID: 3792362691
+    locked: 0
   - name: Player
     uniqueID: 3621610593
     locked: 0
-  - name: Wall
-    uniqueID: 3792362691
+  - name: Tree
+    uniqueID: 2427672759
     locked: 0
