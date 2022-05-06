@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using GameAttribute;
 public class PlayerController : Tank
 {
     [Header("Input")]
@@ -9,21 +9,21 @@ public class PlayerController : Tank
     public KeyCode down = KeyCode.S;
     public KeyCode left = KeyCode.A;
     public KeyCode right = KeyCode.D;
+    public KeyCode fire = KeyCode.J;
     private KeyCode activatedKey { get; set; }
     private bool moveKeyPressed { get; set; }
-    private void Awake()
+    private void Start()
     {
+        tier = Tier.Tier1;
         acceleration = 100.0f;
         moveSpeed = 1.0f;
-        rb2d = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-
         moveKeyPressed = false;
         activatedKey = KeyCode.None;
     }
     private void Update()
     {
         Move();
+        Fire();
     }
 
     void Move()
@@ -66,5 +66,11 @@ public class PlayerController : Tank
         bool IsKeyPressed(KeyCode key) => Input.GetKey(key) && (activatedKey == KeyCode.None || activatedKey == key);
 
         bool IsKeyUp(KeyCode key) => Input.GetKeyUp(key) && activatedKey == key;
+    }
+
+    void Fire(){
+        if(Input.GetKeyDown(fire)){
+            Attack();
+        }
     }
 }

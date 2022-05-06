@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 439606496}
   - component: {fileID: 439606497}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,7 +507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 828790438}
   - component: {fileID: 828790439}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Border (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1582232283}
   - component: {fileID: 1582232284}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Border (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,7 +654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1633192892}
   - component: {fileID: 1633192893}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Border (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -814,6 +814,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6531845601343889320, guid: e9d097cbf24733d43930b100329de1de, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 2674179820198272112, guid: 57eca27457925e4438791617702c7c19, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9d097cbf24733d43930b100329de1de, type: 3}
 --- !u!1001 &1378211764285605942

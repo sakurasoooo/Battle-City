@@ -1,29 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using GameAttribute;
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public abstract class Tank : MonoBehaviour
 {
-    [Header("Bullet")]
-    public BulletSpawnManager bsm;
-    protected enum Tier
-    {
-        Tier1,
-        Tier2,
-        Tier3,
-        Tier4
-    }
+    private BulletSpawnManager bulletSpawnManager;
+    
     public int health { get; protected set; }
-    protected Tier level { get; set; }
+    protected Tier tier { get; set; }
     public bool hasShield { get; protected set; }
     public bool hasEffect { get; protected set; }
     protected float moveSpeed { get; set; }
     protected float acceleration { get; set; }
-    public int bulletSpeed { get; protected set; }
-    public int damage { get; protected set; }
     protected Rigidbody2D rb2d;
     protected Animator animator;
+
+   protected void Awake() {
+        bulletSpawnManager = GetComponentInChildren<BulletSpawnManager>();
+        rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
 
     protected virtual void MoveUp()
     {
@@ -63,9 +60,14 @@ public abstract class Tank : MonoBehaviour
         rb2d.velocity = Vector2.zero; // velocity
     }
 
+    protected virtual void Attack()
+    {
+        bulletSpawnManager.Fire(tier,transform.rotation);
+    }
+
     protected Vector2 Forward() => transform.up;
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Tank"))
         {
