@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 6732507961835703456}
   - component: {fileID: 7578025792371823367}
   - component: {fileID: 8446000597779954433}
-  - component: {fileID: 2504937070361486309}
   - component: {fileID: -7952664136308324674}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2674179820198272112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.71999997, y: -1.76, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -114,18 +113,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.08}
   m_EdgeRadius: 0
---- !u!114 &2504937070361486309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2674179820198272112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62b1f7a32db06814690e64e99bb1a488, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &-7952664136308324674
 Rigidbody2D:
   serializedVersion: 4

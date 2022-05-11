@@ -14,19 +14,25 @@ public class PlayerController : Tank
     private bool moveKeyPressed { get; set; }
     private void Start()
     {
+        
         tier = Tier.Tier1;
         acceleration = 100.0f;
         moveSpeed = 1.0f;
         moveKeyPressed = false;
         activatedKey = KeyCode.None;
+        
+        audioSource.Play();
     }
     private void Update()
     {
+        if(!audioSource.isPlaying) {
+            audioSource.Play();
+        }
         Move();
         Fire();
     }
 
-    void Move()
+    private void Move()
     {
         if (IsKeyPressed(up))
         {
@@ -62,14 +68,14 @@ public class PlayerController : Tank
             activatedKey = KeyCode.None;
             MoveStop();
         }
-
-        bool IsKeyPressed(KeyCode key) => Input.GetKey(key) && (activatedKey == KeyCode.None || activatedKey == key);
-
-        bool IsKeyUp(KeyCode key) => Input.GetKeyUp(key) && activatedKey == key;
     }
+    private bool IsKeyPressed(KeyCode key) => Input.GetKey(key) && (activatedKey == KeyCode.None || activatedKey == key);
 
-    void Fire(){
-        if(Input.GetKeyDown(fire)){
+    private bool IsKeyUp(KeyCode key) => Input.GetKeyUp(key) && activatedKey == key;
+    private void Fire()
+    {
+        if (Input.GetKeyDown(fire))
+        {
             Attack();
         }
     }

@@ -2,28 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameAttribute;
-[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator), typeof(AudioSource))]
 public abstract class Tank : MonoBehaviour
 {
     private BulletSpawnManager bulletSpawnManager;
-    
-    public int health { get; protected set; }
-    protected Tier tier { get; set; }
-    public bool hasShield { get; protected set; }
-    public bool hasEffect { get; protected set; }
-    protected float moveSpeed { get; set; }
-    protected float acceleration { get; set; }
+
+    [Header("Audio")]
+    public AudioClip idle;
+    public AudioClip move;
+
+    public int health { get; protected set; } // health points
+    protected Tier tier { get; set; } // level 
+    public bool hasShield { get; protected set; } // if health can reduce
+    public bool hasEffect { get; protected set; } // generate reward if hit
+    protected float moveSpeed { get; set; } // move speed
+    protected float acceleration { get; set; } // move acceleration
     protected Rigidbody2D rb2d;
     protected Animator animator;
 
-   protected void Awake() {
+    protected AudioSource audioSource;
+
+    protected virtual void Awake()
+    {
         bulletSpawnManager = GetComponentInChildren<BulletSpawnManager>();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        
+        tier = Tier.Tier1;
+        acceleration = 100.0f;
+        moveSpeed = 1.0f;
+        audioSource.loop = true;
+        audioSource.clip = idle;
     }
 
     protected virtual void MoveUp()
     {
+        audioSource.clip = move; // audio
         animator.SetBool("Move", true); // aniamtion
         transform.rotation = Quaternion.Euler(0, 0, 0); // Rotation
         rb2d.AddForce(Forward() * acceleration * Time.deltaTime); // velocity
@@ -32,6 +47,7 @@ public abstract class Tank : MonoBehaviour
 
     protected virtual void MoveDown()
     {
+        audioSource.clip = move; // audio
         animator.SetBool("Move", true);// aniamtion
         transform.rotation = Quaternion.Euler(0, 0, 180); // Rotation
         rb2d.AddForce(Forward() * acceleration * Time.deltaTime); // velocity
@@ -40,6 +56,7 @@ public abstract class Tank : MonoBehaviour
 
     protected virtual void MoveLeft()
     {
+        audioSource.clip = move; // audio
         animator.SetBool("Move", true);// aniamtion
         transform.rotation = Quaternion.Euler(0, 0, 90); // Rotation
         rb2d.AddForce(Forward() * acceleration * Time.deltaTime); // velocity
@@ -48,6 +65,7 @@ public abstract class Tank : MonoBehaviour
 
     protected virtual void MoveRight()
     {
+        audioSource.clip = move; // audio
         animator.SetBool("Move", true);// aniamtion
         transform.rotation = Quaternion.Euler(0, 0, 270); // Rotation
         rb2d.AddForce(Forward() * acceleration * Time.deltaTime); // velocity
@@ -56,18 +74,19 @@ public abstract class Tank : MonoBehaviour
 
     protected virtual void MoveStop()
     {
+        audioSource.clip = idle; // audio
         animator.SetBool("Move", false);// aniamtion
         rb2d.velocity = Vector2.zero; // velocity
     }
 
     protected virtual void Attack()
     {
-        bulletSpawnManager.Fire(tier,transform.rotation);
+        bulletSpawnManager.Fire(tier, transform.rotation);
     }
 
-    protected Vector2 Forward() => transform.up;
+    protected virtual Vector2 Forward() => transform.up;
 
-    private void OnCollisionEnter2D(Collision2D other)
+    protected virtual void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Tank"))
         {

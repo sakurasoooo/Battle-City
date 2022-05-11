@@ -2,24 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameAttribute;
-public class Bullet : MonoBehaviour
+
+public abstract class Bullet : MonoBehaviour
 {
-    private float speed { get; set; }
-    private float damage { get; set; }
+    [Header("Audio")]
+    public AudioClip fireSound;
+    public AudioClip explosionSound;
+
+    protected float speed { get; set; }
+    protected float damage { get; set; }
+    protected AudioSource audioSource;
     public Tier tier { get; set; }
     public BulletSpawnManager bulletSpawnManager { get; set; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
+        audioSource = GameObject.Find("Audio Manager").GetComponent<AudioSource>();
         speed = 2.0f;
         damage = 100.0f;
     }
-    private void Update()
+
+    protected virtual void Start()
+    {
+        if (fireSound != null)
+        {
+            audioSource.PlayOneShot(fireSound);
+        }
+    }
+    protected virtual void Update()
     {
         Move();
     }
 
-    void Move()
+    protected virtual void Move()
     {
         float moveSpeed = speed;
         switch (tier)
@@ -41,7 +56,7 @@ public class Bullet : MonoBehaviour
         transform.Translate(Forward() * speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Border"))
@@ -50,10 +65,14 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    Vector2 Forward() => Vector2.up;
+    protected virtual Vector2 Forward() => Vector2.up;
 
-    public void DestorySelf()
+    public virtual void DestorySelf()
     {
+        if (explosionSound != null)// audio
+        {
+            audioSource.PlayOneShot(explosionSound);
+        }
         //particle
         bulletSpawnManager.bullets--;
         Destroy(gameObject);
