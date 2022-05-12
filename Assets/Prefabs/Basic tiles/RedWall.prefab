@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1145225952487884714}
   - component: {fileID: 8344101750113236196}
   - component: {fileID: 1963430890293174567}
+  - component: {fileID: 5115872983480828982}
   m_Layer: 6
   m_Name: RedWall
   m_TagString: Untagged
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -502604605
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 940033058, guid: f882bd1e7116e614e849bc00042b9ece, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -111,3 +112,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &5115872983480828982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7180607698131322558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00ae39d85b39ec42bd6a600f65676ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5372036507668781123, guid: 57eca27457925e4438791617702c7c19, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6732507961835703456, guid: 57eca27457925e4438791617702c7c19, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -57,6 +61,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57eca27457925e4438791617702c7c19, type: 3}
+--- !u!4 &6033563829864231178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1189473039179303492, guid: 57eca27457925e4438791617702c7c19, type: 3}
+  m_PrefabInstance: {fileID: 4844286858695031630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7360787638081791806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2674179820198272112, guid: 57eca27457925e4438791617702c7c19, type: 3}
@@ -76,3 +85,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireSound: {fileID: 8300000, guid: a21d0fdb7dc801c44ac21ca5612e1467, type: 3}
   explosionSound: {fileID: 8300000, guid: 603cf9977172490478345b8190668372, type: 3}
+  effect: {fileID: 3761293229876740375, guid: 3c5415e030958764f82a764d5c4d2520, type: 3}
+  headPos: {fileID: 6033563829864231178}
