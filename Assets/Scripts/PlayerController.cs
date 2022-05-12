@@ -23,6 +23,25 @@ public class PlayerController : Tank
         
         audioSource.Play();
     }
+
+    private void OnGUI() {
+        if (GUI.Button(new Rect(1, 10, 50, 25), "Tier 1"))
+        {
+            tier = Tier.Tier1;
+        }
+        if (GUI.Button(new Rect(1, 60, 50, 25), "Tier 2"))
+        {
+            tier = Tier.Tier2;
+        }
+        if (GUI.Button(new Rect(1, 110, 50, 25), "Tier 3"))
+        {
+            tier = Tier.Tier3;
+        }
+        if (GUI.Button(new Rect(1, 160, 50, 25), "Tier 4"))
+        {
+            tier = Tier.Tier4;
+        }
+    }
     private void Update()
     {
         if(!audioSource.isPlaying) {
