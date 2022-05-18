@@ -8,7 +8,7 @@ Name: Zero
 - Audio
   - [x] Start Music
   - [x] Original sound pack
-  - [ ] custom sound pack
+  - [ ] ~~custom sound pack~~
 - Art/Sprites
   - Tanks
     - [x] Player A tank
@@ -67,14 +67,14 @@ Name: Zero
         - [ ] release a random power-up if the tank is flashing red
       - [x] Health Points system
         - [ ] Be destroyed when HP reach 0
-          - [ ] Audio
+          - [x] Audio
           - [ ] Aniamtion
       - [ ] lives system
       - Player
-        - [ ] birth with **Tier 1**
-        - [ ] 100 HP
+        - [x] birth with **Tier 1**
+        - [x] 100 HP
         - [ ] birth with shield
-        - [ ] birth at bottom of map(fixed location)
+        - [x] birth at bottom of map(fixed location)
         - [x] Use keyboard Control the tank
         - [x] Press 'W' to go up
         - [x] Press 'S' to go down
@@ -84,21 +84,21 @@ Name: Zero
       - Enemy
         - [ ] Birth at Top of map(3 random locations)
         - [ ] Path finding. Can find a path to the base.
-        - [ ] fire bullets continuously
+        - [x] fire bullets continuously
         - [ ] choose a random direction to move
         - [ ] randomly assign flashing  
         - [ ] Base Tank
-          - [ ] birth with **Tier 1**
+          - [x] birth with **Tier 1**
           - [ ] 100 HP
           - [ ] Slow Movement Speed
           - [ ] Slow Bullet Speed
         - [ ] Faster Tank
-          - [ ] birth with **Tier 2**
+          - [x] ~~birth with **Tier 2**~~ birth with **Tier 1**
           - [ ] 100 HP
           - [ ] fast Movement Speed
           - [ ] normal Bullet Speed
         - [ ] Power Tank
-          - [ ] birth with **Tier 3**
+          - [ ] ~~birth with **Tier 3**~~ birth with **Tier 1**
           - [ ] 100 HP
           - [ ] normal Movement Speed
           - [ ] fast Bullet Speed
@@ -137,13 +137,13 @@ Name: Zero
       - Brick Wall - Basic walls. Can be destoryed by any bullets
         - [x] Tanks cannot go through
         - [x] divied into 4*4 parts
-        - [ ] Normal bullets can destory 1*4 parts
-        - [ ] Powerful bullets can destory 2*4 parts
+        - [x] Normal bullets can destory 1*4 parts
+        - [x] Powerful bullets can destory 2*4 parts
       - Steel Wall - soild walls. Can only Be destroyed by powerful bullets
         - [x] Tanks cannot go through
-        - [ ] divied into 2*2 parts
-        - [ ] Normal bullets cannot destory
-        - [ ] Powerful bullets can destory 1*2 parts
+        - [x] divied into 2*2 parts
+        - [x] Normal bullets cannot destory
+        - [x] Powerful bullets can destory 1*2 parts
       - Trees - Can hide the tanks
         - [x] Tanks can go through
         - [x] Bullets can go through
