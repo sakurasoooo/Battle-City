@@ -29,4 +29,11 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+
+    private void OnDestroy() {
+        if (playerA != null)
+        {
+            Destroy(playerA);
+        }
+    }
 }
