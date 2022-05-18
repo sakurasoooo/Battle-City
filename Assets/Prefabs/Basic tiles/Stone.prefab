@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 200965058159320987}
   - component: {fileID: 2145098222310715415}
   - component: {fileID: 65062312213922964}
+  - component: {fileID: -7395013792462759452}
   m_Layer: 6
   m_Name: Stone
   m_TagString: Untagged
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -502604605
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c7b55a63bb9c7674fa493e54f461f3dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -111,3 +112,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &-7395013792462759452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4954472707130501730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc2ad29dce56f145965fbf894087c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

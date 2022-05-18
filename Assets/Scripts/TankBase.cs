@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameAttribute;
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator), typeof(AudioSource))]
-public abstract class Tank : MonoBehaviour
+public abstract class TankBase : MonoBehaviour
 {
     private BulletSpawnManager bulletSpawnManager;
 
@@ -28,12 +28,18 @@ public abstract class Tank : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-        
+
         tier = Tier.Tier1;
         acceleration = 100.0f;
         moveSpeed = 1.0f;
         audioSource.loop = true;
         audioSource.clip = idle;
+    }
+
+    protected virtual void Update()
+    {
+        animator.SetFloat("Health", health);
+        animator.SetInteger("Tier", (int)tier);
     }
 
     protected virtual void MoveUp()
@@ -91,6 +97,25 @@ public abstract class Tank : MonoBehaviour
         if (other.gameObject.CompareTag("Tank"))
         {
             rb2d.velocity = Vector2.zero; // velocity
+        }
+    }
+
+    protected virtual void LevelUp()
+    {
+        switch (tier)
+        {
+            case Tier.Tier1:
+                tier = Tier.Tier2;
+                break;
+            case Tier.Tier2:
+                tier = Tier.Tier3;
+                break;
+            case Tier.Tier3:
+                tier = Tier.Tier4;
+                break;
+            default:
+                tier = Tier.Tier1;
+                break;
         }
     }
 

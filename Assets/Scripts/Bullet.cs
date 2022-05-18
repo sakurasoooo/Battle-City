@@ -19,6 +19,10 @@ public abstract class Bullet : MonoBehaviour
     public Tier tier { get; set; }
     public BulletSpawnManager bulletSpawnManager { get; set; }
 
+    // protected float moveSpeed { get; set; }
+    protected float explosionWidth { get; set; }
+    protected float explosionDepth { get; set; }
+
     protected bool isAlive;
 
     protected virtual void Awake()
@@ -27,6 +31,9 @@ public abstract class Bullet : MonoBehaviour
         speed = 2.0f;
         damage = 100.0f;
         isAlive = true;
+        explosionWidth = 0.50f;
+        explosionDepth = 0.04f;
+        // moveSpeed = speed;
     }
 
     protected virtual void Start()
@@ -35,56 +42,98 @@ public abstract class Bullet : MonoBehaviour
         {
             audioSource.PlayOneShot(fireSound);
         }
-    }
-    protected virtual void Update()
-    {
-        Move();
-    }
 
-    protected virtual void Move()
-    {
-        float moveSpeed = speed;
         switch (tier)
         {
             case Tier.Tier1:
                 break; //placeholder
             case Tier.Tier2:
-                moveSpeed = speed * 1.5f;
+                speed = speed * 1.5f;
                 break;//
             case Tier.Tier3:
+                speed = speed * 1.5f;
                 break; // placeholder
             case Tier.Tier4:
+                explosionDepth += 0.32f;
+                speed = speed * 1.5f;
                 break; // placeholder
             default:
                 Debug.Log("No Tier Found!");
                 break;
         }
+    }
+    protected virtual void Update()
+    {
+        Move();
+        DebugDrawBox(headPos.position, new Vector2(explosionWidth, explosionDepth), Quaternion.Angle(transform.rotation, Quaternion.identity), Color.cyan, 0.0f); //DEBUG
+    }
+
+    protected virtual void Move()
+    {
+
 
         transform.Translate(Forward() * speed * Time.deltaTime);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-
-        if (other.gameObject.layer == LayerMask.NameToLayer("Border"))
+        if (isAlive)
         {
-            DestorySelf();
-        }
 
-        else if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
-        {
-            DestorySelf();
-        }
+            if (other.gameObject.layer == LayerMask.NameToLayer("Border"))
+            {
+                DestroySelf();
+            }
 
-        else if (other.gameObject.layer == LayerMask.NameToLayer("Bullet"))
-        {
-            DestorySelf();
+            else if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+            {
+                WallDetection();
+                DestroySelf();
+            }
+
+            else if (other.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+            {
+                DestroySelf();
+            }
         }
     }
 
-    protected virtual Vector2 Forward() => Vector2.up;
+    //https://gamedev.stackexchange.com/questions/156543/how-does-physics2d-overlapboxall-work-in-unity-3d
+    void DebugDrawBox(Vector2 point, Vector2 size, float angle, Color color, float duration)
+    {
 
-    public virtual void DestorySelf()
+        var orientation = Quaternion.Euler(0, 0, angle);
+
+        // Basis vectors, half the size in each direction from the center.
+        Vector2 right = orientation * Vector2.right * size.x / 2f;
+        Vector2 up = orientation * Vector2.up * size.y / 2f;
+
+        // Four box corners.
+        var topLeft = point + up - right;
+        var topRight = point + up + right;
+        var bottomRight = point - up + right;
+        var bottomLeft = point - up - right;
+
+        // Now we've reduced the problem to drawing lines.
+        Debug.DrawLine(topLeft, topRight, color, duration);
+        Debug.DrawLine(topRight, bottomRight, color, duration);
+        Debug.DrawLine(bottomRight, bottomLeft, color, duration);
+        Debug.DrawLine(bottomLeft, topLeft, color, duration);
+    }
+
+    private void WallDetection()
+    {
+
+        Collider2D[] result = Physics2D.OverlapBoxAll(headPos.position, new Vector2(explosionWidth, explosionDepth), Quaternion.Angle(transform.rotation, Quaternion.identity), LayerMask.GetMask("Wall"));
+        foreach (Collider2D other in result)
+        {
+            other.SendMessage("DestroySelf", tier);
+        }
+    }
+
+    private Vector2 Forward() => Vector2.up;
+
+    public virtual void DestroySelf()
     {
         if (isAlive)
         {

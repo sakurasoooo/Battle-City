@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameAttribute;
-public class PlayerController : Tank
+public class PlayerController : TankBase
 {
     [Header("Input")]
     public KeyCode up = KeyCode.W;
@@ -41,9 +41,15 @@ public class PlayerController : Tank
         {
             tier = Tier.Tier4;
         }
+        if (GUI.Button(new Rect(1, 210, 50, 25), "Level Up"))
+        {
+            LevelUp();
+        }
     }
-    private void Update()
+    protected  override void Update()
     {
+        animator.SetFloat("Health", health);
+        animator.SetInteger("Tier", (int)tier);
         if(!audioSource.isPlaying) {
             audioSource.Play();
         }
