@@ -32,7 +32,7 @@ public abstract class Bullet : MonoBehaviour
         damage = 100.0f;
         isAlive = true;
         explosionWidth = 0.50f;
-        explosionDepth = 0.04f;
+        explosionDepth = 0.02f;
         // moveSpeed = speed;
     }
 
@@ -93,7 +93,18 @@ public abstract class Bullet : MonoBehaviour
 
             else if (other.gameObject.layer == LayerMask.NameToLayer("Bullet"))
             {
+                BulletDetection(other);
                 DestroySelf();
+            }
+            else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                PlayerDetection(other);
+                // DestroySelf();
+            }
+            else if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                EnemyDetection(other);
+                // DestroySelf();
             }
         }
     }
@@ -119,6 +130,21 @@ public abstract class Bullet : MonoBehaviour
         Debug.DrawLine(topRight, bottomRight, color, duration);
         Debug.DrawLine(bottomRight, bottomLeft, color, duration);
         Debug.DrawLine(bottomLeft, topLeft, color, duration);
+    }
+
+    protected virtual void BulletDetection(Collider2D other)
+    {
+
+    }
+
+    protected virtual void PlayerDetection(Collider2D other)
+    {
+        
+    }
+
+    protected virtual void EnemyDetection(Collider2D other)
+    {
+        
     }
 
     private void WallDetection()

@@ -11,24 +11,31 @@ public abstract class TankBase : MonoBehaviour
     public AudioClip idle;
     public AudioClip move;
 
+    public AudioClip explosionSound;
+
     public int health { get; protected set; } // health points
     protected Tier tier { get; set; } // level 
     public bool hasShield { get; protected set; } // if health can reduce
     public bool hasEffect { get; protected set; } // generate reward if hit
     protected float moveSpeed { get; set; } // move speed
     protected float acceleration { get; set; } // move acceleration
+
+    protected bool isAlive;
     protected Rigidbody2D rb2d;
     protected Animator animator;
 
     protected AudioSource audioSource;
+    protected AudioSource mainAudioSource;
 
     protected virtual void Awake()
     {
+        mainAudioSource = GameObject.Find("Audio Manager").GetComponent<AudioSource>();
         bulletSpawnManager = GetComponentInChildren<BulletSpawnManager>();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-
+        
+        isAlive = true;
         tier = Tier.Tier1;
         acceleration = 100.0f;
         moveSpeed = 1.0f;
@@ -116,6 +123,15 @@ public abstract class TankBase : MonoBehaviour
             default:
                 tier = Tier.Tier1;
                 break;
+        }
+    }
+
+    protected virtual void DestroySelf()
+    {   
+        Destroy(gameObject);
+        if(explosionSound != null)
+        {
+            mainAudioSource.PlayOneShot(explosionSound);
         }
     }
 

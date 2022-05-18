@@ -41,9 +41,14 @@ public class PlayerController : TankBase
         {
             tier = Tier.Tier4;
         }
-        if (GUI.Button(new Rect(1, 210, 50, 25), "Level Up"))
+        if (GUI.Button(new Rect(1, 210, 70, 25), "Level Up"))
         {
             LevelUp();
+        }
+
+        if (GUI.Button(new Rect(1, 260, 70, 25), "Destroy"))
+        {
+            DestroySelf();
         }
     }
     protected  override void Update()

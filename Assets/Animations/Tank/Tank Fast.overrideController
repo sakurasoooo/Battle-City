@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Tank Fast
+  m_Controller: {fileID: 9100000, guid: 15276a4527cae81489c8e3eacde3f198, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 71f9dea5a03d2ce41b9580c562fa2179, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8818205600725154da4a6d6d8b99d1ca, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0e18bf5b7649d804989ddc46b83fca25, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2be26ec35b08b6b4e8e08dc8b909b58d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8db3afa8f5044894a92f779cb7d91cca, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2be26ec35b08b6b4e8e08dc8b909b58d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 998bbc1359dbe3d479064d36e2cba685, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2be26ec35b08b6b4e8e08dc8b909b58d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a51d35753c2c82f4596544fb3597e59b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2be26ec35b08b6b4e8e08dc8b909b58d, type: 2}

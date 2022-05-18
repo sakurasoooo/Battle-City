@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPlayer : Bullet
+public class BulletEnemy : Bullet
 {
-    protected override void EnemyDetection(Collider2D other)
+    protected override void PlayerDetection(Collider2D other)
     {
         other.SendMessage("DestroySelf");
         DestroySelf();
