@@ -13,7 +13,6 @@ public class SteelWall : WallBase
             case Tier.Tier2:
                 break;
             case Tier.Tier3:
-                Destroy(gameObject);
                 break;
             case Tier.Tier4:
                 Destroy(gameObject);
