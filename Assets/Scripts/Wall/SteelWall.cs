@@ -2,8 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameAttribute;
+[RequireComponent(typeof(Animator))]
 public class SteelWall : WallBase
 {
+
+    private Animator animator;
+    private void Awake() {
+        animator = GetComponent<Animator>();
+        
+    }
+
+    public void Flash()
+    {
+        animator.SetTrigger("Flash");
+    }
     protected override void DestroySelf(Tier tier)
     {
         switch (tier)

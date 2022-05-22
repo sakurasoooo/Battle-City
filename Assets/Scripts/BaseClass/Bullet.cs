@@ -113,7 +113,7 @@ public abstract class Bullet : MonoBehaviour
             }
             else if (other.gameObject.layer == LayerMask.NameToLayer("Base"))
             {
-                other.SendMessage("DestroySelf");
+                other.SendMessage("DestroySelf", tier);
                 DestroySelf();
             }
 

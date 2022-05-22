@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3017609285507802385
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1039408984371687665, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105593149530154636, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285889279758402334, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285889279758402334, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285889279758402334, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285889279758402334, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285889279758402334, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285889279758402334, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285889279758402334, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285889279758402334, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285889279758402334, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285889279758402334, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285889279758402334, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2928618376324386614, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_Name
+      value: Tile Manager 6 Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597453957431194765, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695958822012085693, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580392937240942076, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864239590490020040, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579438282777583257, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822917333674638476, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 38e828775ff0647bd9230a9dc512c8ba, type: 3}
