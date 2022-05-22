@@ -28,7 +28,7 @@ public abstract class Bullet : MonoBehaviour
     protected virtual void Awake()
     {
         audioSource = GameObject.Find("Audio Manager").GetComponent<AudioSource>();
-        speed = 2.0f;
+        speed = 2.5f;
         damage = 100.0f;
         isAlive = true;
         explosionWidth = 0.50f;
@@ -43,6 +43,11 @@ public abstract class Bullet : MonoBehaviour
             audioSource.PlayOneShot(fireSound);
         }
 
+        LevelUp();
+    }
+
+    protected virtual void LevelUp()
+    {
         switch (tier)
         {
             case Tier.Tier1:
@@ -79,7 +84,7 @@ public abstract class Bullet : MonoBehaviour
     {
         if (isAlive)
         {
-            
+
             if (other.gameObject.layer == LayerMask.NameToLayer("Border"))
             {
                 DestroySelf();
@@ -145,12 +150,12 @@ public abstract class Bullet : MonoBehaviour
 
     protected virtual void PlayerDetection(Collider2D other)
     {
-        
+
     }
 
     protected virtual void EnemyDetection(Collider2D other)
     {
-        
+
     }
 
     private void WallDetection()

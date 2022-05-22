@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : TankBase
 {
-    private WaitForSeconds delay = new WaitForSeconds(1.0f);
+    protected WaitForSeconds delay = new WaitForSeconds(1.0f);
 
     private void Start() {
         health = 100;
@@ -17,7 +17,7 @@ public class EnemyController : TankBase
         animator.SetInteger("Tier", (int)tier);
         MoveDown();
     }
-    private IEnumerator Fire()
+    protected virtual IEnumerator Fire()
     {
         while(isAlive)
         {

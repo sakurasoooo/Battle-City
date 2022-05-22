@@ -112,13 +112,14 @@ public class PlayerController : TankBase
     {
         acceleration *=2.0f;
         moveSpeed*=2.0f;
+        bulletTier = Tier.Tier2;
     }
     protected override void Tier3()
     {
-
+        bulletTier = Tier.Tier3;
     }
     protected override void Tier4()
     {
-
+        bulletTier = Tier.Tier4;
     }
 }

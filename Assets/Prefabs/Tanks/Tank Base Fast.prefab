@@ -67,5 +67,27 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8536810102621333311, guid: d0999662c241ef6488928332cc433cab, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d0999662c241ef6488928332cc433cab, type: 3}
+--- !u!1 &8933516874788681560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1041495602280884658, guid: d0999662c241ef6488928332cc433cab, type: 3}
+  m_PrefabInstance: {fileID: 8470735434734493418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8721751318480722968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8933516874788681560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d730292bc601dc48baffb75a601e101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idle: {fileID: 0}
+  move: {fileID: 0}
+  slip: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: 9321a1d00f9c921418c361043e9bffb9, type: 3}

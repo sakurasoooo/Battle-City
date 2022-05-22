@@ -16,6 +16,7 @@ public abstract class TankBase : MonoBehaviour
 
     public int health { get; protected set; } // health points
     protected Tier tier { get; set; } // level 
+    protected Tier bulletTier { get; set; } // level 
     public bool hasShield { get; protected set; } // if health can reduce
     public bool hasEffect { get; protected set; } // generate reward if hit
     protected float moveSpeed { get; set; } // move speed
@@ -44,10 +45,12 @@ public abstract class TankBase : MonoBehaviour
         health = 100;
         isAlive = true;
         tier = Tier.Tier1;
+        bulletTier = Tier.Tier1;
         acceleration = 100.0f;
         moveSpeed = 1.0f;
         audioSource.loop = true;
         audioSource.clip = idle;
+
     }
 
     protected virtual void Update()
@@ -162,9 +165,9 @@ public abstract class TankBase : MonoBehaviour
     private IEnumerator SlipCoroutine()
     {
         WaitForSeconds interval = new WaitForSeconds(0.1f);
-        for (int i = 0; i< 5;i++) 
-        {   
-            if(onSnow == false)
+        for (int i = 0; i < 5; i++)
+        {
+            if (onSnow == false)
             {
                 break;
             }
@@ -175,7 +178,7 @@ public abstract class TankBase : MonoBehaviour
 
     private void StopSlip()
     {
-        if(slipCoroutine != null)
+        if (slipCoroutine != null)
         {
             StopCoroutine(slipCoroutine);
             slipCoroutine = null;
@@ -184,7 +187,7 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void Attack()
     {
-        bulletSpawnManager.Fire(tier, transform.rotation);
+        bulletSpawnManager.Fire(bulletTier, transform.rotation);
     }
 
     protected virtual Vector2 Forward() => transform.up;
@@ -272,10 +275,33 @@ public abstract class TankBase : MonoBehaviour
     protected virtual void DestroySelf()
     {
         Destroy(gameObject);
-        if (explosionSound != null)
+        if (explosionSound  is not null)
         {
             mainAudioSource.PlayOneShot(explosionSound);
         }
+    }
+    protected virtual void RandomEffect()
+    {
+        int result = Random.Range(0, 100);
+        switch (result)
+        {
+            case >= 0 and < 33:
+                EnableEffect();
+                break;
+            default:
+                break;
+        }
+    }
+    protected virtual void EnableEffect()
+    {
+        hasEffect = true;
+        animator.SetBool("Effect", true);
+    }
+
+    protected virtual void DisableEffect()
+    {
+        hasEffect = false;
+        animator.SetBool("Effect", false);
     }
 
     protected virtual void ReduceHP()
