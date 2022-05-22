@@ -6,6 +6,6 @@ public class Star : PowerUp
 {
     protected override void Effect()
     {
-        
+        target.SendMessage("LevelUp");
     }
 }

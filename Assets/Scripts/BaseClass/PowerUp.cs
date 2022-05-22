@@ -10,6 +10,8 @@ public abstract class PowerUp : MonoBehaviour
     public AudioClip UseSound;
     protected AudioSource audioSource;
     protected Animator animator;
+
+    protected GameObject target;
     protected virtual void Awake()
     {
         animator = GetComponent<Animator>();
@@ -41,6 +43,7 @@ public abstract class PowerUp : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
+        target = other.gameObject;
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 Use();
