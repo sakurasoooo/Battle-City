@@ -30,10 +30,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnDestroy() {
-        if (playerA != null)
-        {
-            Destroy(playerA);
-        }
-    }
+    // private void OnDestroy() {
+    //     if (playerA != null)
+    //     {
+    //         Destroy(playerA);
+    //     }
+    // }
 }

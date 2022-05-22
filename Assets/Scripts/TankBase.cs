@@ -20,6 +20,7 @@ public abstract class TankBase : MonoBehaviour
     protected float moveSpeed { get; set; } // move speed
     protected float acceleration { get; set; } // move acceleration
 
+    // private bool canMove;
     protected bool isAlive;
     protected Rigidbody2D rb2d;
     protected Animator animator;
@@ -35,6 +36,7 @@ public abstract class TankBase : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         
+        // canMove = false;
         isAlive = true;
         tier = Tier.Tier1;
         acceleration = 100.0f;
@@ -47,10 +49,37 @@ public abstract class TankBase : MonoBehaviour
     {
         animator.SetFloat("Health", health);
         animator.SetInteger("Tier", (int)tier);
+
+        
+    }
+
+    // protected virtual void FixedUpdate() {
+    //     if(!canMove)
+    //     {
+    //         rb2d.velocity = Vector2.zero;
+    //     }
+    // }
+
+    protected virtual void LateUpdate() {
+        if (health <= 0)
+        {
+            DestroySelf();
+        }
+    }
+    
+    protected virtual void CanMove()
+    {
+        rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    protected virtual void CannotMove()
+    {
+        rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     protected virtual void MoveUp()
     {
+        CanMove();
         audioSource.clip = move; // audio
         animator.SetBool("Move", true); // aniamtion
         transform.rotation = Quaternion.Euler(0, 0, 0); // Rotation
@@ -60,6 +89,7 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void MoveDown()
     {
+        CanMove();
         audioSource.clip = move; // audio
         animator.SetBool("Move", true);// aniamtion
         transform.rotation = Quaternion.Euler(0, 0, 180); // Rotation
@@ -69,6 +99,7 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void MoveLeft()
     {
+        CanMove();
         audioSource.clip = move; // audio
         animator.SetBool("Move", true);// aniamtion
         transform.rotation = Quaternion.Euler(0, 0, 90); // Rotation
@@ -78,6 +109,7 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void MoveRight()
     {
+        CanMove();
         audioSource.clip = move; // audio
         animator.SetBool("Move", true);// aniamtion
         transform.rotation = Quaternion.Euler(0, 0, 270); // Rotation
@@ -87,6 +119,7 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void MoveStop()
     {
+        CannotMove();
         audioSource.clip = idle; // audio
         animator.SetBool("Move", false);// aniamtion
         rb2d.velocity = Vector2.zero; // velocity
@@ -99,13 +132,26 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual Vector2 Forward() => transform.up;
 
-    protected virtual void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Tank"))
-        {
-            rb2d.velocity = Vector2.zero; // velocity
-        }
-    }
+    // protected virtual void OnCollisionStay2D(Collision2D other)
+    // {
+    //     if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+    //     {
+    //         Vector2 direction =  other.transform.position - transform.position;
+    //         direction = direction.normalized;
+    //         Debug.Log(direction);
+
+    //         Vector2 v = Vector3.Project(rb2d.velocity,direction);
+    //         float flag = Vector3.Dot(v.normalized,direction);
+    //         if(flag > 0.99f)
+    //         {
+    //             rb2d.velocity += (-v);
+    //         }
+    //         // if (flag < -0.99)
+    //         // {
+    //         //     rb2d.velocity += (v);
+    //         // }
+    //     }
+    // }
 
     protected virtual void LevelUp()
     {
@@ -133,6 +179,11 @@ public abstract class TankBase : MonoBehaviour
         {
             mainAudioSource.PlayOneShot(explosionSound);
         }
+    }
+
+    protected virtual void ReduceHP()
+    {
+        health -= 100;
     }
 
 }
