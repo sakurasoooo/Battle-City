@@ -6,7 +6,7 @@ public class BulletEnemy : Bullet
 {
     protected override void PlayerDetection(Collider2D other)
     {
-        other.SendMessage("DestroySelf");
+        other.SendMessage("ReduceHP");
         DestroySelf();
     }
 }

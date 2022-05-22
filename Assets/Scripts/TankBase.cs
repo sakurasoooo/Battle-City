@@ -10,6 +10,7 @@ public abstract class TankBase : MonoBehaviour
     [Header("Audio")]
     public AudioClip idle;
     public AudioClip move;
+    public AudioClip slip;
 
     public AudioClip explosionSound;
 
@@ -22,11 +23,14 @@ public abstract class TankBase : MonoBehaviour
 
     // private bool canMove;
     protected bool isAlive;
+    protected bool onSnow;
     protected Rigidbody2D rb2d;
     protected Animator animator;
 
     protected AudioSource audioSource;
     protected AudioSource mainAudioSource;
+
+    private Coroutine slipCoroutine;
 
     protected virtual void Awake()
     {
@@ -35,8 +39,9 @@ public abstract class TankBase : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-        
-        // canMove = false;
+
+        onSnow = false;
+        health = 100;
         isAlive = true;
         tier = Tier.Tier1;
         acceleration = 100.0f;
@@ -50,7 +55,7 @@ public abstract class TankBase : MonoBehaviour
         animator.SetFloat("Health", health);
         animator.SetInteger("Tier", (int)tier);
 
-        
+
     }
 
     // protected virtual void FixedUpdate() {
@@ -60,13 +65,14 @@ public abstract class TankBase : MonoBehaviour
     //     }
     // }
 
-    protected virtual void LateUpdate() {
+    protected virtual void LateUpdate()
+    {
         if (health <= 0)
         {
             DestroySelf();
         }
     }
-    
+
     protected virtual void CanMove()
     {
         rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -79,6 +85,7 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void MoveUp()
     {
+        StopSlip();
         CanMove();
         audioSource.clip = move; // audio
         animator.SetBool("Move", true); // aniamtion
@@ -89,6 +96,7 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void MoveDown()
     {
+        StopSlip();
         CanMove();
         audioSource.clip = move; // audio
         animator.SetBool("Move", true);// aniamtion
@@ -99,6 +107,7 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void MoveLeft()
     {
+        StopSlip();
         CanMove();
         audioSource.clip = move; // audio
         animator.SetBool("Move", true);// aniamtion
@@ -109,6 +118,7 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void MoveRight()
     {
+        StopSlip();
         CanMove();
         audioSource.clip = move; // audio
         animator.SetBool("Move", true);// aniamtion
@@ -119,10 +129,57 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void MoveStop()
     {
-        CannotMove();
+        Debug.Log(rb2d.velocity);
+
         audioSource.clip = idle; // audio
         animator.SetBool("Move", false);// aniamtion
-        rb2d.velocity = Vector2.zero; // velocity
+
+        if (onSnow)
+        {
+            if (slip != null)
+            {
+                mainAudioSource.PlayOneShot(slip);
+
+            }
+            if (rb2d.velocity.x > 0.01f || rb2d.velocity.x < -0.01f)
+            {
+                rb2d.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
+            }
+            else if (rb2d.velocity.y > 0.01f || rb2d.velocity.y < -0.01f)
+            {
+                rb2d.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+            }
+            slipCoroutine = StartCoroutine(SlipCoroutine());
+        }
+        else
+        {
+            rb2d.velocity = Vector2.zero; // velocity
+            CannotMove();
+        }
+
+    }
+
+    private IEnumerator SlipCoroutine()
+    {
+        WaitForSeconds interval = new WaitForSeconds(0.1f);
+        for (int i = 0; i< 5;i++) 
+        {   
+            if(onSnow == false)
+            {
+                break;
+            }
+            yield return interval;
+        }
+        CannotMove();
+    }
+
+    private void StopSlip()
+    {
+        if(slipCoroutine != null)
+        {
+            StopCoroutine(slipCoroutine);
+            slipCoroutine = null;
+        }
     }
 
     protected virtual void Attack()
@@ -153,29 +210,69 @@ public abstract class TankBase : MonoBehaviour
     //     }
     // }
 
+    protected virtual void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Snow"))
+        {
+            onSnow = true;
+        }
+    }
+
+    protected virtual void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Snow"))
+        {
+            onSnow = false;
+        }
+    }
+
     protected virtual void LevelUp()
     {
         switch (tier)
         {
             case Tier.Tier1:
+                Tier2();
                 tier = Tier.Tier2;
                 break;
             case Tier.Tier2:
+                Tier3();
                 tier = Tier.Tier3;
                 break;
             case Tier.Tier3:
+                Tier4();
                 tier = Tier.Tier4;
                 break;
+            case Tier.Tier4:
+                // do nothing
+                break;
             default:
+                Tier1();
                 tier = Tier.Tier1;
                 break;
         }
     }
 
+    protected virtual void Tier1()
+    {
+
+    }
+    protected virtual void Tier2()
+    {
+
+    }
+    protected virtual void Tier3()
+    {
+
+    }
+    protected virtual void Tier4()
+    {
+
+    }
+
     protected virtual void DestroySelf()
-    {   
+    {
         Destroy(gameObject);
-        if(explosionSound != null)
+        if (explosionSound != null)
         {
             mainAudioSource.PlayOneShot(explosionSound);
         }

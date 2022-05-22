@@ -184,6 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idle: {fileID: 8300000, guid: 36171c70f17b84c4d923abdb28238344, type: 3}
   move: {fileID: 8300000, guid: e3efc47947452c94ea5d7607bce516b1, type: 3}
+  slip: {fileID: 8300000, guid: e2429e311e89cf74e888146e22b863bb, type: 3}
   explosionSound: {fileID: 8300000, guid: 9321a1d00f9c921418c361043e9bffb9, type: 3}
   up: 119
   down: 115

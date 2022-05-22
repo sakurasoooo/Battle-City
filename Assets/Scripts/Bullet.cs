@@ -79,7 +79,7 @@ public abstract class Bullet : MonoBehaviour
     {
         if (isAlive)
         {
-
+            
             if (other.gameObject.layer == LayerMask.NameToLayer("Border"))
             {
                 DestroySelf();
@@ -106,6 +106,12 @@ public abstract class Bullet : MonoBehaviour
                 EnemyDetection(other);
                 // DestroySelf();
             }
+            else if (other.gameObject.layer == LayerMask.NameToLayer("Base"))
+            {
+                other.SendMessage("DestroySelf");
+                DestroySelf();
+            }
+
         }
     }
 

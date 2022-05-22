@@ -15,9 +15,6 @@ public class PlayerController : TankBase
     private void Start()
     {
         
-        tier = Tier.Tier1;
-        acceleration = 100.0f;
-        moveSpeed = 1.0f;
         moveKeyPressed = false;
         activatedKey = KeyCode.None;
         
@@ -31,6 +28,7 @@ public class PlayerController : TankBase
         }
         if (GUI.Button(new Rect(1, 60, 50, 25), "Tier 2"))
         {
+            Tier2();
             tier = Tier.Tier2;
         }
         if (GUI.Button(new Rect(1, 110, 50, 25), "Tier 3"))
@@ -108,5 +106,19 @@ public class PlayerController : TankBase
         {
             Attack();
         }
+    }
+
+    protected override void Tier2()
+    {
+        acceleration *=2.0f;
+        moveSpeed*=2.0f;
+    }
+    protected override void Tier3()
+    {
+
+    }
+    protected override void Tier4()
+    {
+
     }
 }

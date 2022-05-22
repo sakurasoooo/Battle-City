@@ -7,7 +7,8 @@ public class EnemyController : TankBase
     private WaitForSeconds delay = new WaitForSeconds(1.0f);
 
     private void Start() {
-        // StartCoroutine(Fire());
+        health = 100;
+        StartCoroutine(Fire());
     }
 
     protected override void Update()
