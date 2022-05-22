@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class EnemyController : TankBase
 {
-    protected WaitForSeconds delay = new WaitForSeconds(1.0f);
+    protected WaitForSeconds delay ;
 
-    private void Start() {
-        health = 100;
-        StartCoroutine(Fire());
-    }
+    
 
     protected override void Update()
     {

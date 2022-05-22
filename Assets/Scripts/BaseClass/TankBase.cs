@@ -132,7 +132,6 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void MoveStop()
     {
-        Debug.Log(rb2d.velocity);
 
         audioSource.clip = idle; // audio
         animator.SetBool("Move", false);// aniamtion
@@ -275,7 +274,7 @@ public abstract class TankBase : MonoBehaviour
     protected virtual void DestroySelf()
     {
         Destroy(gameObject);
-        if (explosionSound  is not null)
+        if (explosionSound != null)
         {
             mainAudioSource.PlayOneShot(explosionSound);
         }
@@ -306,6 +305,11 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void ReduceHP()
     {
+        if (hasEffect)
+        {
+            // generate item
+            DisableEffect();
+        }
         health -= 100;
     }
 

@@ -61,7 +61,7 @@ Name: Zero
         - [x] **Tier 1**: normal speed. only has one bullet
         - [x] **Tier 2**: faster speed
         - [x] **Tier 3**: has two bullets
-        - [ ] **Tier 4**: more powerful bullet. double efficiency when destroy Brick Walls. Can Destroy Steel Walls.
+        - [x] **Tier 4**: more powerful bullet. double efficiency when destroy Brick Walls. Can Destroy Steel Walls.
       - [x] can flash red
         - [ ] Aniamtion
         - [ ] release a random power-up if the tank is flashing red
@@ -86,17 +86,17 @@ Name: Zero
         - [ ] Path finding. Can find a path to the base.
         - [x] fire bullets continuously
         - [ ] choose a random direction to move
-        - [ ] randomly assign flashing  
+        - [x] randomly assign flashing  
         - [ ] Base Tank
           - [x] birth with **Tier 1**
-          - [ ] 100 HP
-          - [ ] Slow Movement Speed
-          - [ ] Slow Bullet Speed
+          - [x] 100 HP
+          - [x] Slow Movement Speed
+          - [x] Slow Bullet Speed
         - [ ] Faster Tank
           - [x] ~~birth with **Tier 2**~~ birth with **Tier 1**
-          - [ ] 100 HP
-          - [ ] fast Movement Speed
-          - [ ] normal Bullet Speed
+          - [x] 100 HP
+          - [x] fast Movement Speed
+          - [x] normal Bullet Speed
         - [ ] Power Tank
           - [ ] ~~birth with **Tier 3**~~ birth with **Tier 1**
           - [ ] 100 HP
@@ -111,16 +111,16 @@ Name: Zero
           - [ ] double efficiency when destroy Brick Walls
     - Bullets
       - [x] Keep moving forward
-      - [ ] Be destoryed when collide with any obstacles
-      - [ ] Can destory Brick Walls
-      - [ ] Can destory Steel Walls
+      - [x] Be destoryed when collide with any obstacles
+      - [x] Can destory Brick Walls
+      - [x] Can destory Steel Walls
       - [x] can level up (increase Tier)
       - Player Bullet
         - [ ] Can stop alliance if collide with alliance
-        - [ ] reduce enemy 100 HP
+        - [x] reduce enemy 100 HP
       - Enemy Bullet
         - [ ] Can stop alliance if collide with alliance
-        - [ ] reduce Player 100 HP
+        - [x] reduce Player 100 HP
     - Power-Ups
       - [ ] can be picked up by Player
       - [ ] can be picked up by Enemy
@@ -150,11 +150,11 @@ Name: Zero
         - [x] Tanks can hardly be seen under the trees
         - [x] Bullets can hardly be seen under the trees
         - [x] Cannot be Destoryed
-      - Ice - Cannot control the tanks on the Ice
+      - ~~Ice~~Snow - Cannot control the tanks on the Ice
         - [x] Tanks can go through
         - [x] Bullets can go through
-        - [ ] Tanks cannot be controled on the ice
-        - [ ] Tanks cannot stop on the ice
+        - [ ] ~~Tanks cannot be controled on the ice~~ Tanks slipping on the Snow
+        - [x] ~~Tanks cannot stop on the Snow~~ Tanks are hardly to stop on the Snow
         - [x] Cannot be Destoryed
       - Water - Tanks cannot swim
         - [x] Tanks **cannot** go through
