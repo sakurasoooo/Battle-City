@@ -12,16 +12,19 @@ public class PlayerController : TankBase
     public KeyCode fire = KeyCode.J;
     private KeyCode activatedKey { get; set; }
     private bool moveKeyPressed { get; set; }
+    private GameManager gameManager;
     private void Start()
     {
-        
+
         moveKeyPressed = false;
         activatedKey = KeyCode.None;
         BirthProtection();
         audioSource.Play();
+        gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
-    private void OnGUI() {
+    private void OnGUI()
+    {
         if (GUI.Button(new Rect(1, 10, 50, 25), "Tier 1"))
         {
             tier = Tier.Tier1;
@@ -49,15 +52,19 @@ public class PlayerController : TankBase
             DestroySelf();
         }
     }
-    protected  override void Update()
+    protected override void Update()
     {
         animator.SetFloat("Health", health);
         animator.SetInteger("Tier", (int)tier);
-        if(!audioSource.isPlaying) {
+        if (!audioSource.isPlaying)
+        {
             audioSource.Play();
         }
-        Move();
-        Fire();
+        if (gameManager.gameOver != true)
+        {
+            Move();
+            Fire();
+        }
     }
 
     private void Move()
@@ -110,8 +117,8 @@ public class PlayerController : TankBase
 
     protected override void Tier2()
     {
-        acceleration *=2.0f;
-        moveSpeed*=2.0f;
+        acceleration *= 2.0f;
+        moveSpeed *= 2.0f;
         bulletTier = Tier.Tier2;
     }
     protected override void Tier3()
