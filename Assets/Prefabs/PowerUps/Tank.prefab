@@ -78,5 +78,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771f422277803654ba63fcbae4df0d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BirthSound: {fileID: 0}
-  UseSound: {fileID: 0}
+  BirthSound: {fileID: 8300000, guid: f0affa234bd712844821e774790e70b8, type: 3}
+  UseSound: {fileID: 8300000, guid: 8853b5e788b53d542b0525a2d09fd2a8, type: 3}

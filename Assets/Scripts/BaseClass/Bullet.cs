@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameAttribute;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public abstract class Bullet : MonoBehaviour
 {
     [Header("Audio")]
@@ -25,6 +26,8 @@ public abstract class Bullet : MonoBehaviour
 
     protected bool isAlive;
 
+    protected BoxCollider2D boxCollider2D;
+
     protected virtual void Awake()
     {
         audioSource = GameObject.Find("Audio Manager").GetComponent<AudioSource>();
@@ -33,6 +36,7 @@ public abstract class Bullet : MonoBehaviour
         isAlive = true;
         explosionWidth = 0.50f;
         explosionDepth = 0.02f;
+        boxCollider2D = GetComponent<BoxCollider2D>();
         // moveSpeed = speed;
     }
 
@@ -186,5 +190,10 @@ public abstract class Bullet : MonoBehaviour
             isAlive = false;
             Destroy(gameObject);
         }
+    }
+
+    public void Ignore(Collider2D target)
+    {
+        Physics2D.IgnoreCollision(target,boxCollider2D,true);
     }
 }

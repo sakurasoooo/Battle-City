@@ -81,4 +81,9 @@ public class GameManager : MonoBehaviour
        }
 
    }
+
+   public void AddPlayerLives()
+   {
+       playerlives++;
+   }
 }

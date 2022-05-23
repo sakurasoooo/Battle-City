@@ -14,6 +14,10 @@ public abstract class TankBase : MonoBehaviour
 
     public AudioClip explosionSound;
 
+    [Header("Shield")]
+    public GameObject shieldNormal;
+    public GameObject shieldSmall;
+
     public int health { get; protected set; } // health points
     protected Tier tier { get; set; } // level 
     protected Tier bulletTier { get; set; } // level 
@@ -30,8 +34,11 @@ public abstract class TankBase : MonoBehaviour
 
     protected AudioSource audioSource;
     protected AudioSource mainAudioSource;
+    protected BoxCollider2D boxCollider2D;
 
     private Coroutine slipCoroutine;
+    protected PowerUpManager powerUpManager;
+    protected GameObject shield;
 
     protected virtual void Awake()
     {
@@ -40,7 +47,8 @@ public abstract class TankBase : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-
+        powerUpManager = GameObject.FindObjectOfType<PowerUpManager>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
         onSnow = false;
         health = 100;
         isAlive = true;
@@ -61,12 +69,25 @@ public abstract class TankBase : MonoBehaviour
 
     }
 
-    // protected virtual void FixedUpdate() {
-    //     if(!canMove)
-    //     {
-    //         rb2d.velocity = Vector2.zero;
-    //     }
-    // }
+    protected virtual void BirthProtection()
+    {
+        if (shieldSmall != null)
+        {
+            shield = Instantiate(shieldSmall, transform);
+        }
+    }
+
+    public virtual void AddShield()
+    {
+        if (shieldNormal != null)
+        {
+            if(shield != null) {
+                Destroy(shield);  
+            }
+            shield = Instantiate(shieldNormal, transform);
+        }
+    }
+
 
     protected virtual void LateUpdate()
     {
@@ -186,7 +207,7 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void Attack()
     {
-        bulletSpawnManager.Fire(bulletTier, transform.rotation);
+        bulletSpawnManager.Fire(bulletTier, transform.rotation, boxCollider2D, shield ? shield.GetComponent<BoxCollider2D>() : null);
     }
 
     protected virtual Vector2 Forward() => transform.up;
@@ -273,7 +294,7 @@ public abstract class TankBase : MonoBehaviour
 
     public virtual void PauseTank()
     {
-        
+
     }
 
     protected virtual void DestroySelf()
@@ -312,6 +333,7 @@ public abstract class TankBase : MonoBehaviour
     {
         if (hasEffect)
         {
+            powerUpManager.GeneratePowerUp();
             // generate item
             DisableEffect();
         }

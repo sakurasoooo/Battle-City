@@ -17,7 +17,7 @@ public class PlayerController : TankBase
         
         moveKeyPressed = false;
         activatedKey = KeyCode.None;
-        
+        BirthProtection();
         audioSource.Play();
     }
 

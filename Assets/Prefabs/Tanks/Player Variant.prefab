@@ -186,6 +186,8 @@ MonoBehaviour:
   move: {fileID: 8300000, guid: e3efc47947452c94ea5d7607bce516b1, type: 3}
   slip: {fileID: 8300000, guid: e2429e311e89cf74e888146e22b863bb, type: 3}
   explosionSound: {fileID: 8300000, guid: 9321a1d00f9c921418c361043e9bffb9, type: 3}
+  shieldNormal: {fileID: 6422995982551845064, guid: b7c68f268b396254dbb4dda35b4bd41e, type: 3}
+  shieldSmall: {fileID: 6951206606303153020, guid: 548443f1323c2e04597936acfcfd16a1, type: 3}
   up: 119
   down: 115
   left: 97

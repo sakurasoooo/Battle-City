@@ -24,6 +24,7 @@ public class EnemyManager : MonoBehaviour
 
    public GameObject GetNext()
    {
+      enemySum--;
       if(enemyList.Count > 0)
       {
          GameObject tank = enemyList[0];

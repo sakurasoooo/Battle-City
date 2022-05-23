@@ -6,7 +6,7 @@ public class Helmet : PowerUp
 {
     protected override void Effect()
     {
-        
+        target.SendMessage("AddShield");
     }
 }
 

@@ -6,6 +6,7 @@ public class Tank : PowerUp
 {
     protected override void Effect()
     {
-        
+        GameManager gameManager = GameObject.FindObjectOfType<GameManager>();
+        gameManager.AddPlayerLives();
     }
 }

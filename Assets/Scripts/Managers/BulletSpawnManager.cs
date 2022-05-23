@@ -12,32 +12,32 @@ public class BulletSpawnManager : MonoBehaviour
         bullets = 0;
     }
 
-    public void Fire(Tier tier, Quaternion rotation)
+    public void Fire(Tier tier, Quaternion rotation, Collider2D self, Collider2D other)
     {
         switch (tier)
         {
             case Tier.Tier1:
                 if (bullets < 1)
                 {
-                    CreateBullet(tier, rotation);
+                    CreateBullet(tier, rotation, self, other);
                 }
                 break;
             case Tier.Tier2:
                 if (bullets < 1)
                 {
-                    CreateBullet(tier, rotation);
+                    CreateBullet(tier, rotation, self, other);
                 }
                 break;
             case Tier.Tier3:
                 if (bullets < 2)
                 {
-                    CreateBullet(tier, rotation);
+                    CreateBullet(tier, rotation, self, other);
                 }
                 break;
             case Tier.Tier4:
                 if (bullets < 2)
                 {
-                    CreateBullet(tier, rotation);
+                    CreateBullet(tier, rotation, self, other);
                 }
                 break;
             default:
@@ -46,11 +46,17 @@ public class BulletSpawnManager : MonoBehaviour
         }
     }
 
-    void CreateBullet(Tier tier, Quaternion rotation)
+    void CreateBullet(Tier tier, Quaternion rotation,Collider2D self, Collider2D other)
     {
         Bullet clone = Instantiate(bulletPrefab, transform.position, rotation).GetComponent<Bullet>();
         clone.tier = tier;
         clone.bulletSpawnManager = this;
+        if(self != null) {
+            clone.Ignore(self);
+        }
+        if(other != null) {
+            clone.Ignore(other);
+        }
         bullets++;
     }
 }
