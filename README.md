@@ -82,7 +82,7 @@ Name: Zero
         - [x] Press 'D' to go left
         - [x] Press 'J' to fire
       - Enemy
-        - [ ] Birth at Top of map(3 random locations)
+        - [x] Birth at Top of map(3 random locations)
         - [ ] Path finding. Can find a path to the base.
         - [x] fire bullets continuously
         - [ ] choose a random direction to move
@@ -125,14 +125,14 @@ Name: Zero
       - [x] can be picked up by Player
       - [ ] ~~can be picked up by Enemy~~ DEPREACTED
       - [x] **Grenade**: Destory all enemies in the scene
-      - [ ] **Helmet**: generate a shild on the tank
+      - [x] **Helmet**: generate a shild on the tank
       - [x] **Shovel**: repalce the Wall around the base to Steel Walls
       - [x] **Star**: increase one Tier of the tank
-      - [ ] **Tank**: increase one life of the tank
+      - [x] **Tank**: increase one life of the tank
       - [ ] **Timer**: pause all enemies for 10 seconds(The World)
     - Environment
       - [x] The map size is 13 unit * 13 unit = 169 grids
-      - [ ] Each Grid has only one Environment (None/Brick/Steel/Tree/Water/Ice)
+      - [x] Each Grid has only one Environment (None/Brick/Steel/Tree/Water/Ice)
       - [ ] Each Grid has its own generation system. Generate Environment randomly
       - Brick Wall - Basic walls. Can be destoryed by any bullets
         - [x] Tanks cannot go through

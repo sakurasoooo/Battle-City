@@ -10,6 +10,11 @@ public class BulletEnemy : Bullet
         DestroySelf();
     }
 
+    protected override void EnemyDetection(Collider2D other)
+    {
+        DestroySelf();
+    }
+
     protected override void LevelUp()
     {
         switch (tier)

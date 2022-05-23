@@ -9,4 +9,9 @@ public class BulletPlayer : Bullet
         other.SendMessage("ReduceHP");
         DestroySelf();
     }
+
+    protected override void PlayerDetection(Collider2D other)
+    {
+        DestroySelf();
+    }
 }
