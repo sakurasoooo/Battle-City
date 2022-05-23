@@ -271,6 +271,11 @@ public abstract class TankBase : MonoBehaviour
 
     }
 
+    public virtual void PauseTank()
+    {
+        
+    }
+
     protected virtual void DestroySelf()
     {
         Destroy(gameObject);

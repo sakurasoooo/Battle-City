@@ -126,8 +126,8 @@ Name: Zero
       - [ ] ~~can be picked up by Enemy~~ DEPREACTED
       - [x] **Grenade**: Destory all enemies in the scene
       - [ ] **Helmet**: generate a shild on the tank
-      - [ ] **Shovel**: repalce the Wall around the base to Steel Walls
-      - [ ] **Star**: increase one Tier of the tank
+      - [x] **Shovel**: repalce the Wall around the base to Steel Walls
+      - [x] **Star**: increase one Tier of the tank
       - [ ] **Tank**: increase one life of the tank
       - [ ] **Timer**: pause all enemies for 10 seconds(The World)
     - Environment
