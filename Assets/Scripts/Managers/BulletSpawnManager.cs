@@ -12,32 +12,32 @@ public class BulletSpawnManager : MonoBehaviour
         bullets = 0;
     }
 
-    public void Fire(Tier tier, Quaternion rotation, Collider2D self, Collider2D other)
+    public void Fire(Tier tier, Tier bulletTier, Quaternion rotation, Collider2D self, Collider2D other)
     {
         switch (tier)
         {
             case Tier.Tier1:
                 if (bullets < 1)
                 {
-                    CreateBullet(tier, rotation, self, other);
+                    CreateBullet(bulletTier, rotation, self, other);
                 }
                 break;
             case Tier.Tier2:
                 if (bullets < 1)
                 {
-                    CreateBullet(tier, rotation, self, other);
+                    CreateBullet(bulletTier, rotation, self, other);
                 }
                 break;
             case Tier.Tier3:
                 if (bullets < 2)
                 {
-                    CreateBullet(tier, rotation, self, other);
+                    CreateBullet(bulletTier, rotation, self, other);
                 }
                 break;
             case Tier.Tier4:
                 if (bullets < 2)
                 {
-                    CreateBullet(tier, rotation, self, other);
+                    CreateBullet(bulletTier, rotation, self, other);
                 }
                 break;
             default:

@@ -25,11 +25,11 @@ public class BulletEnemy : Bullet
             case Tier.Tier2:
                 speed = speed * 1.0f;
                 break;//
-            case Tier.Tier3:
+            case Tier.Tier5:
                 explosionDepth += 0.32f;
                 speed = speed * 1.5f;
                 break; // placeholder
-            case Tier.Tier5:
+            case Tier.Tier3:
                 explosionDepth += 0.32f;
                 speed = speed * 1.0f;
                 break; // placeholder

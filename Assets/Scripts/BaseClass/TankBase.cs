@@ -26,9 +26,9 @@ public abstract class TankBase : MonoBehaviour
     protected float moveSpeed { get; set; } // move speed
     protected float acceleration { get; set; } // move acceleration
 
-    // private bool canMove;
-    protected bool isAlive;
+    // protected bool isAlive;
     protected bool onSnow;
+    protected static bool pasueTank = false;
     protected Rigidbody2D rb2d;
     protected Animator animator;
 
@@ -40,6 +40,8 @@ public abstract class TankBase : MonoBehaviour
     protected PowerUpManager powerUpManager;
     protected GameObject shield;
 
+    // protected WaitForSeconds pauseDuration;
+    // protected static Coroutine pasuConrotine;
     protected virtual void Awake()
     {
         mainAudioSource = GameObject.Find("Audio Manager").GetComponent<AudioSource>();
@@ -51,7 +53,8 @@ public abstract class TankBase : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
         onSnow = false;
         health = 100;
-        isAlive = true;
+        // isAlive = true;
+        // pasueTank = false;
         tier = Tier.Tier1;
         bulletTier = Tier.Tier1;
         acceleration = 100.0f;
@@ -59,6 +62,7 @@ public abstract class TankBase : MonoBehaviour
         audioSource.loop = true;
         audioSource.clip = idle;
 
+        // pauseDuration = new WaitForSeconds(10.0f);
     }
 
     protected virtual void Update()
@@ -81,8 +85,9 @@ public abstract class TankBase : MonoBehaviour
     {
         if (shieldNormal != null)
         {
-            if(shield != null) {
-                Destroy(shield);  
+            if (shield != null)
+            {
+                Destroy(shield);
             }
             shield = Instantiate(shieldNormal, transform);
         }
@@ -207,7 +212,7 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void Attack()
     {
-        bulletSpawnManager.Fire(bulletTier, transform.rotation, boxCollider2D, shield ? shield.GetComponent<BoxCollider2D>() : null);
+        bulletSpawnManager.Fire(tier, bulletTier, transform.rotation, boxCollider2D, shield ? shield.GetComponent<BoxCollider2D>() : null);
     }
 
     protected virtual Vector2 Forward() => transform.up;
@@ -292,10 +297,28 @@ public abstract class TankBase : MonoBehaviour
 
     }
 
+    public static void Unpause()
+    {
+        pasueTank = false;
+    }
+
     public virtual void PauseTank()
     {
-
+        pasueTank = true;
+        MoveStop();
+        // if (pasuConrotine != null)
+        // {
+        //     StopCoroutine(pasuConrotine);
+        // }
+        // pasuConrotine = StartCoroutine(PauseTimer());
     }
+
+    // protected IEnumerator PauseTimer()
+    // {
+
+    //     yield return pauseDuration;
+    //     pasueTank = false;
+    // }
 
     protected virtual void DestroySelf()
     {

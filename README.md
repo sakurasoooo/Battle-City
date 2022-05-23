@@ -42,7 +42,7 @@ Name: Zero
     - [ ] Game lose condition - Player lose if no life left or Base is destroyed
     - [ ] Level select Menu
     - [ ] Level Create
-    - [ ] Game pause/Unpause
+    - [x] Game pause/Unpause
     - [ ] Next level
     - [ ] Score - Record the Score
     - [ ] Storage - Record the highest Score
@@ -63,17 +63,17 @@ Name: Zero
         - [x] **Tier 3**: has two bullets
         - [x] **Tier 4**: more powerful bullet. double efficiency when destroy Brick Walls. Can Destroy Steel Walls.
       - [x] can flash red
-        - [ ] Aniamtion
-        - [ ] release a random power-up if the tank is flashing red
+        - [x] Aniamtion
+        - [x] release a random power-up if the tank is flashing red
       - [x] Health Points system
-        - [ ] Be destroyed when HP reach 0
+        - [x] Be destroyed when HP reach 0
           - [x] Audio
           - [ ] Aniamtion
-      - [ ] lives system
+      - [x] lives system
       - Player
         - [x] birth with **Tier 1**
         - [x] 100 HP
-        - [ ] birth with shield
+        - [x] birth with shield
         - [x] birth at bottom of map(fixed location)
         - [x] Use keyboard Control the tank
         - [x] Press 'W' to go up
@@ -87,28 +87,28 @@ Name: Zero
         - [x] fire bullets continuously
         - [ ] choose a random direction to move
         - [x] randomly assign flashing  
-        - [ ] Base Tank
+        - [x] Base Tank
           - [x] birth with **Tier 1**
           - [x] 100 HP
           - [x] Slow Movement Speed
           - [x] Slow Bullet Speed
-        - [ ] Faster Tank
+        - [x] Faster Tank
           - [x] ~~birth with **Tier 2**~~ birth with **Tier 1**
           - [x] 100 HP
           - [x] fast Movement Speed
           - [x] normal Bullet Speed
-        - [ ] Power Tank
-          - [ ] ~~birth with **Tier 3**~~ birth with **Tier 1**
-          - [ ] 100 HP
-          - [ ] normal Movement Speed
-          - [ ] fast Bullet Speed
-          - [ ] double efficiency when destroy Brick Walls.
-        - [ ] Armor Tank
-          - [ ] birth with **Tier 3**
-          - [ ] 400 HP
-          - [ ] normal Movement Speed
-          - [ ] normal Bullet Speed
-          - [ ] double efficiency when destroy Brick Walls
+        - [x] Power Tank
+          - [x] ~~birth with **Tier 3**~~ birth with **Tier 1**
+          - [x] 100 HP
+          - [x] normal Movement Speed
+          - [x] fast Bullet Speed
+          - [x] double efficiency when destroy Brick Walls.
+        - [ ] Armor Tank **Need new texture**
+          - [x] ~~birth with **Tier 3** ~~birth with **Tier 1**
+          - [x] 400 HP
+          - [x] normal Movement Speed
+          - [x] normal Bullet Speed
+          - [x] double efficiency when destroy Brick Walls
     - Bullets
       - [x] Keep moving forward
       - [x] Be destoryed when collide with any obstacles
@@ -153,7 +153,7 @@ Name: Zero
       - ~~Ice~~Snow - Cannot control the tanks on the Ice
         - [x] Tanks can go through
         - [x] Bullets can go through
-        - [ ] ~~Tanks cannot be controled on the ice~~ Tanks slipping on the Snow
+        - [x] ~~Tanks cannot be controled on the ice~~ Tanks slipping on the Snow
         - [x] ~~Tanks cannot stop on the Snow~~ Tanks are hardly to stop on the Snow
         - [x] Cannot be Destoryed
       - Water - Tanks cannot swim

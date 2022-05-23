@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Timer : PowerUp
 {
+    private EnemyManager enemyManager;
     protected override void Effect()
     {
         Collider2D[] result = Physics2D.OverlapBoxAll(Vector2.zero,new Vector2 (13,13),0,LayerMask.GetMask("Enemy"));
@@ -11,5 +12,9 @@ public class Timer : PowerUp
         {
             other.SendMessage("PauseTank");
         }
-    }
+        enemyManager = GameObject.FindObjectOfType<EnemyManager>();
+        enemyManager.pauseAllTanks();
+    }   
+
+    
 }

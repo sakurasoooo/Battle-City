@@ -13,6 +13,7 @@ public class PlayerController : TankBase
     private KeyCode activatedKey { get; set; }
     private bool moveKeyPressed { get; set; }
     private GameManager gameManager;
+    private UIManager uIManager;
     private void Start()
     {
 
@@ -21,6 +22,7 @@ public class PlayerController : TankBase
         BirthProtection();
         audioSource.Play();
         gameManager = GameObject.FindObjectOfType<GameManager>();
+        uIManager = GameObject.FindObjectOfType<UIManager>();
     }
 
     private void OnGUI()
@@ -60,7 +62,7 @@ public class PlayerController : TankBase
         {
             audioSource.Play();
         }
-        if (gameManager.gameOver != true)
+        if (gameManager.gameOver != true && uIManager.isPause != true)
         {
             Move();
             Fire();

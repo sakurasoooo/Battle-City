@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     private GameManager gameManager;
     private AudioSource audioSource;
     // private AudioListener audioListener;
-    private bool isPause;
+    public bool isPause { get; private set; }
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
