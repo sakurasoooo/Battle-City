@@ -91,3 +91,5 @@ MonoBehaviour:
   move: {fileID: 0}
   slip: {fileID: 0}
   explosionSound: {fileID: 8300000, guid: 9321a1d00f9c921418c361043e9bffb9, type: 3}
+  shieldNormal: {fileID: 0}
+  shieldSmall: {fileID: 0}

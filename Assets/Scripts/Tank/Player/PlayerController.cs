@@ -67,6 +67,10 @@ public class PlayerController : TankBase
             Move();
             Fire();
         }
+
+        if(gameManager.gameOver){
+            MoveStop();
+        }
     }
 
     private void Move()
@@ -100,7 +104,7 @@ public class PlayerController : TankBase
             || IsKeyUp(down)
             || IsKeyUp(left)
             || IsKeyUp(right)
-             )
+            )
         {
             activatedKey = KeyCode.None;
             MoveStop();

@@ -40,6 +40,8 @@ public abstract class TankBase : MonoBehaviour
     protected PowerUpManager powerUpManager;
     protected GameObject shield;
 
+    protected CollsionDetection collsionDetection;
+
     // protected WaitForSeconds pauseDuration;
     // protected static Coroutine pasuConrotine;
     protected virtual void Awake()
@@ -51,6 +53,7 @@ public abstract class TankBase : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         powerUpManager = GameObject.FindObjectOfType<PowerUpManager>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        collsionDetection = GetComponent<CollsionDetection>();
         onSnow = false;
         health = 100;
         // isAlive = true;
@@ -61,7 +64,6 @@ public abstract class TankBase : MonoBehaviour
         moveSpeed = 1.0f;
         audioSource.loop = true;
         audioSource.clip = idle;
-
         // pauseDuration = new WaitForSeconds(10.0f);
     }
 

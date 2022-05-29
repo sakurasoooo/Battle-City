@@ -8,6 +8,8 @@ public class EnemyController : TankBase
     protected Coroutine moveCoroutine;
 
     private bool moveNext = true;
+
+    
     protected override void Update()
     {
         animator.SetFloat("Health", health);
@@ -16,7 +18,7 @@ public class EnemyController : TankBase
         {
             RandomMove();
         }
-
+    
     }
 
     void RandomMove()
@@ -50,6 +52,15 @@ public class EnemyController : TankBase
         }
     }
 
+
+    protected void StuckDetection()
+    {
+        if(collsionDetection != null && collsionDetection.collided == true)
+            {
+                StopCoroutine(moveCoroutine);
+                moveNext = true;
+            }
+    }
     protected IEnumerator MoveDownCorotine()
     {
 
@@ -64,6 +75,7 @@ public class EnemyController : TankBase
             elapeseTime += Time.deltaTime;
             MoveDown();
             yield return null;
+            StuckDetection();
         }
 
         MoveStop();
@@ -82,6 +94,7 @@ public class EnemyController : TankBase
             elapeseTime += Time.deltaTime;
             MoveUp();
             yield return null;
+            StuckDetection();
         }
 
         MoveStop();
@@ -100,6 +113,7 @@ public class EnemyController : TankBase
             elapeseTime += Time.deltaTime;
             MoveLeft();
             yield return null;
+            StuckDetection();
         }
 
         MoveStop();
@@ -119,6 +133,7 @@ public class EnemyController : TankBase
             elapeseTime += Time.deltaTime;
             MoveRight();
             yield return null;
+            StuckDetection();
         }
 
         MoveStop();
