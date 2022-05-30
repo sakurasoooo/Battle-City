@@ -26,7 +26,6 @@ public abstract class TankBase : MonoBehaviour
     protected float moveSpeed { get; set; } // move speed
     protected float acceleration { get; set; } // move acceleration
 
-    // protected bool isAlive;
     protected bool onSnow;
     protected static bool pasueTank = false;
     protected Rigidbody2D rb2d;
@@ -38,14 +37,16 @@ public abstract class TankBase : MonoBehaviour
 
     private Coroutine slipCoroutine;
     protected PowerUpManager powerUpManager;
+    protected GameManager gameManager;
+    
     protected GameObject shield;
 
     protected CollsionDetection collsionDetection;
 
-    // protected WaitForSeconds pauseDuration;
-    // protected static Coroutine pasuConrotine;
     protected virtual void Awake()
     {
+        gameManager = GameObject.FindObjectOfType<GameManager>();
+
         mainAudioSource = GameObject.Find("Audio Manager").GetComponent<AudioSource>();
         bulletSpawnManager = GetComponentInChildren<BulletSpawnManager>();
         rb2d = GetComponent<Rigidbody2D>();
@@ -56,15 +57,12 @@ public abstract class TankBase : MonoBehaviour
         collsionDetection = GetComponent<CollsionDetection>();
         onSnow = false;
         health = 100;
-        // isAlive = true;
-        // pasueTank = false;
         tier = Tier.Tier1;
         bulletTier = Tier.Tier1;
         acceleration = 100.0f;
         moveSpeed = 1.0f;
         audioSource.loop = true;
         audioSource.clip = idle;
-        // pauseDuration = new WaitForSeconds(10.0f);
     }
 
     protected virtual void Update()
@@ -164,7 +162,7 @@ public abstract class TankBase : MonoBehaviour
         audioSource.clip = idle; // audio
         animator.SetBool("Move", false);// aniamtion
 
-        if (onSnow)
+        if (onSnow&& gameManager.gameOver == false)
         {
             if (slip != null)
             {
@@ -219,26 +217,7 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual Vector2 Forward() => transform.up;
 
-    // protected virtual void OnCollisionStay2D(Collision2D other)
-    // {
-    //     if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-    //     {
-    //         Vector2 direction =  other.transform.position - transform.position;
-    //         direction = direction.normalized;
-    //         Debug.Log(direction);
 
-    //         Vector2 v = Vector3.Project(rb2d.velocity,direction);
-    //         float flag = Vector3.Dot(v.normalized,direction);
-    //         if(flag > 0.99f)
-    //         {
-    //             rb2d.velocity += (-v);
-    //         }
-    //         // if (flag < -0.99)
-    //         // {
-    //         //     rb2d.velocity += (v);
-    //         // }
-    //     }
-    // }
 
     protected virtual void OnTriggerStay2D(Collider2D other)
     {
@@ -308,19 +287,8 @@ public abstract class TankBase : MonoBehaviour
     {
         pasueTank = true;
         MoveStop();
-        // if (pasuConrotine != null)
-        // {
-        //     StopCoroutine(pasuConrotine);
-        // }
-        // pasuConrotine = StartCoroutine(PauseTimer());
+
     }
-
-    // protected IEnumerator PauseTimer()
-    // {
-
-    //     yield return pauseDuration;
-    //     pasueTank = false;
-    // }
 
     protected virtual void DestroySelf()
     {
