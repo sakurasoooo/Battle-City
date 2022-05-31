@@ -182,6 +182,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4209656594365249275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041495602280884658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d15c8ffe3373c410e81ca4c08973b1ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8536810102621333311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,15 +212,4 @@ MonoBehaviour:
   explosionSound: {fileID: 8300000, guid: 9321a1d00f9c921418c361043e9bffb9, type: 3}
   shieldNormal: {fileID: 0}
   shieldSmall: {fileID: 0}
---- !u!114 &4209656594365249275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041495602280884658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d15c8ffe3373c410e81ca4c08973b1ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  explosionEffect: {fileID: 5120455609066566218, guid: 43272453ff733774a8728eacc183e610, type: 3}

@@ -156,6 +156,10 @@ public class EnemyController : TankBase
 
     protected override void DestroySelf()
     {
+        if(explosionEffect != null)
+        {
+            Instantiate(explosionEffect,transform.position,Quaternion.identity);
+        }
         gameManager.DecreaseEnemyCount();
         Destroy(gameObject);
         if (explosionSound != null)

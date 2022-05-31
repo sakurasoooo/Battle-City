@@ -93,3 +93,4 @@ MonoBehaviour:
   explosionSound: {fileID: 8300000, guid: 9321a1d00f9c921418c361043e9bffb9, type: 3}
   shieldNormal: {fileID: 0}
   shieldSmall: {fileID: 0}
+  explosionEffect: {fileID: 5120455609066566218, guid: 43272453ff733774a8728eacc183e610, type: 3}

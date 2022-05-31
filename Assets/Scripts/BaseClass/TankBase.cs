@@ -18,6 +18,9 @@ public abstract class TankBase : MonoBehaviour
     public GameObject shieldNormal;
     public GameObject shieldSmall;
 
+    [Header("Effect")]
+    public GameObject explosionEffect;
+
     public int health { get; protected set; } // health points
     protected Tier tier { get; set; } // level 
     protected Tier bulletTier { get; set; } // level 
@@ -292,6 +295,10 @@ public abstract class TankBase : MonoBehaviour
 
     protected virtual void DestroySelf()
     {
+        if(explosionEffect != null)
+        {
+            Instantiate(explosionEffect,transform.position,Quaternion.identity);
+        }
         Destroy(gameObject);
         if (explosionSound != null)
         {
