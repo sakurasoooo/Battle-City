@@ -21,22 +21,16 @@ public class CollsionDetection : MonoBehaviour
         {
             Vector2 position = transform.position;
             Vector2 direction = transform.up;
-            // RaycastHit2D target = Physics2D.BoxCast(position,new Vector2(0.55f,0.1f),0,velocity.normalized,0.32f);
             int maxResult = 10;
             RaycastHit2D[] results = new RaycastHit2D[maxResult];
             int num = b2d.Cast(direction, results, 0.05f);
 
-            // if(target.collider.isTrigger == false)
-            // {
-            //     collided = true;
-            // }
-            // else {
-            //     collided = false;
-            // }
+
             if (num > 0)
             {
                 foreach (RaycastHit2D target in results)
                 {
+                    //Note: need more on NULL check
                     if (target.collider != null && target.collider.isTrigger == false)
                     {
                         collided = true;

@@ -6172,7 +6172,7 @@ MonoBehaviour:
   - {fileID: 8933516874788681560, guid: 3255305a8d239164a8c2c047c4e3ef20, type: 3}
   - {fileID: 8067612626452991703, guid: 83a30d8ea107beb4594c8d2efe839aef, type: 3}
   - {fileID: 3019523558789761565, guid: 9703b3ff1b2e6be4b9bf564f8bda2be8, type: 3}
-  enemyNumbers: 0d0000000a0000000500000002000000
+  enemyNumbers: 07000000050000000200000001000000
 --- !u!1001 &1758153837
 PrefabInstance:
   m_ObjectHideFlags: 0

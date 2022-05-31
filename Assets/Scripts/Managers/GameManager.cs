@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     private Coroutine enemyConrotine;
 
     public bool gameOver { get; private set; }
+    public bool gameWin { get; private set; }
+    private int enemyCount { get; set; }
     private void Awake()
     {
         detectionInterval = new WaitForSeconds(2.0f);
@@ -32,7 +34,9 @@ public class GameManager : MonoBehaviour
 
         //Start game
         playerlives = 3;
+        enemyCount = 0;
         gameOver = false;
+        gameWin = false;
         enemyManager = GameObject.FindObjectOfType<EnemyManager>();
         uIManager = GameObject.FindObjectOfType<UIManager>();
         enemyExist = new GameObject[4];
@@ -40,19 +44,43 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!gameOver)
+        if (!gameOver &&!gameWin)
         {
             if (playerlives <= 0 && playerA == null)
             {
                 SetGameOver();
             }
+
+            if(enemyCount <= 0 && enemyManager.enemySum <=0)
+            {
+                SetGameWin();
+            }
         }
+
     }
+
+    // private int EnemyCount()
+    // {
+    //     int count = 0;
+    //     foreach(GameObject g in enemyExist)
+    //     {
+    //         if (g != null)
+    //         count++;
+    //     }
+    //     return count;
+    // }
 
     public void SetGameOver()
     {
+        Debug.Log("Lose");
         gameOver = true;
         uIManager.GameOver();
+    }
+
+    public void SetGameWin()
+    {
+        Debug.Log("Win");
+        gameWin = true;
     }
     private void Start()
     {
@@ -90,6 +118,7 @@ public class GameManager : MonoBehaviour
             {
                 if (enemyExist[i] == null) //    if (enemyExist < 4)
                 {
+                    enemyCount++;
                     int randPos = Random.Range(0, enemyBirthPos.Length);
                     GameObject tank = enemyManager.GetNext();
 
@@ -105,8 +134,8 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void AddPlayerLives()
-    {
-        playerlives++;
-    }
+    public void DecreaseEnemyCount() => enemyCount--;
+
+    public void AddPlayerLives() => playerlives++;
+    
 }

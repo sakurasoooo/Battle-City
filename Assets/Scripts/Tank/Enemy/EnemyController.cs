@@ -153,4 +153,14 @@ public class EnemyController : TankBase
         }
 
     }
+
+    protected override void DestroySelf()
+    {
+        gameManager.DecreaseEnemyCount();
+        Destroy(gameObject);
+        if (explosionSound != null)
+        {
+            mainAudioSource.PlayOneShot(explosionSound);
+        }
+    }
 }

@@ -20,7 +20,6 @@ public abstract class Bullet : MonoBehaviour
     public Tier tier { get; set; }
     public BulletSpawnManager bulletSpawnManager { get; set; }
 
-    // protected float moveSpeed { get; set; }
     protected float explosionWidth { get; set; }
     protected float explosionDepth { get; set; }
 
@@ -37,7 +36,6 @@ public abstract class Bullet : MonoBehaviour
         explosionWidth = 0.50f;
         explosionDepth = 0.02f;
         boxCollider2D = GetComponent<BoxCollider2D>();
-        // moveSpeed = speed;
     }
 
     protected virtual void Start()
@@ -108,12 +106,10 @@ public abstract class Bullet : MonoBehaviour
             else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 PlayerDetection(other);
-                // DestroySelf();
             }
             else if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
                 EnemyDetection(other);
-                // DestroySelf();
             }
             else if (other.gameObject.layer == LayerMask.NameToLayer("Base"))
             {
