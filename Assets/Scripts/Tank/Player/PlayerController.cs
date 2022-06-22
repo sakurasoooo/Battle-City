@@ -15,43 +15,45 @@ public class PlayerController : TankBase
     private UIManager uIManager;
     private void Start()
     {
-
+        moveSpeed *= 1.1f;
         moveKeyPressed = false;
         activatedKey = KeyCode.None;
         BirthProtection();
         audioSource.Play();
         uIManager = GameObject.FindObjectOfType<UIManager>();
+
+        // DontDestroyOnLoad(gameObject);
     }
 
-    private void OnGUI()
-    {
-        if (GUI.Button(new Rect(1, 10, 50, 25), "Tier 1"))
-        {
-            tier = Tier.Tier1;
-        }
-        if (GUI.Button(new Rect(1, 60, 50, 25), "Tier 2"))
-        {
-            Tier2();
-            tier = Tier.Tier2;
-        }
-        if (GUI.Button(new Rect(1, 110, 50, 25), "Tier 3"))
-        {
-            tier = Tier.Tier3;
-        }
-        if (GUI.Button(new Rect(1, 160, 50, 25), "Tier 4"))
-        {
-            tier = Tier.Tier4;
-        }
-        if (GUI.Button(new Rect(1, 210, 70, 25), "Level Up"))
-        {
-            LevelUp();
-        }
+    // private void OnGUI()
+    // {
+    //     if (GUI.Button(new Rect(1, 10, 50, 25), "Tier 1"))
+    //     {
+    //         tier = Tier.Tier1;
+    //     }
+    //     if (GUI.Button(new Rect(1, 60, 50, 25), "Tier 2"))
+    //     {
+    //         Tier2();
+    //         tier = Tier.Tier2;
+    //     }
+    //     if (GUI.Button(new Rect(1, 110, 50, 25), "Tier 3"))
+    //     {
+    //         tier = Tier.Tier3;
+    //     }
+    //     if (GUI.Button(new Rect(1, 160, 50, 25), "Tier 4"))
+    //     {
+    //         tier = Tier.Tier4;
+    //     }
+    //     if (GUI.Button(new Rect(1, 210, 70, 25), "Level Up"))
+    //     {
+    //         LevelUp();
+    //     }
 
-        if (GUI.Button(new Rect(1, 260, 70, 25), "Destroy"))
-        {
-            DestroySelf();
-        }
-    }
+    //     if (GUI.Button(new Rect(1, 260, 70, 25), "Destroy"))
+    //     {
+    //         DestroySelf();
+    //     }
+    // }
     protected override void Update()
     {
         animator.SetFloat("Health", health);
@@ -66,7 +68,8 @@ public class PlayerController : TankBase
             Fire();
         }
         // Trigger once
-        if(gameManager.gameOver){
+        if (gameManager.gameOver)
+        {
             MoveStop();
         }
     }
@@ -122,7 +125,7 @@ public class PlayerController : TankBase
     protected override void Tier2()
     {
         acceleration *= 2.0f;
-        moveSpeed *= 2.0f;
+        moveSpeed *= 1.8f;
         bulletTier = Tier.Tier2;
     }
     protected override void Tier3()

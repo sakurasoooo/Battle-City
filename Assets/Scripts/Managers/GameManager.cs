@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject PlayerPrefab;
@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private GameObject[] enemyExist;
     private EnemyManager enemyManager;
     private UIManager uIManager;
+    private TransitionManager transitionManager;
 
     private Coroutine playerConrotine;
     private Coroutine enemyConrotine;
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         detectionInterval = new WaitForSeconds(2.0f);
-        eneymyDetectionInterval = new WaitForSeconds(5.0f);
+        eneymyDetectionInterval = new WaitForSeconds(3.0f);
         birthInterval = new WaitForSeconds(2.0f);
 
         //Start game
@@ -39,19 +40,20 @@ public class GameManager : MonoBehaviour
         gameWin = false;
         enemyManager = GameObject.FindObjectOfType<EnemyManager>();
         uIManager = GameObject.FindObjectOfType<UIManager>();
+        transitionManager = GameObject.FindObjectOfType<TransitionManager>();
         enemyExist = new GameObject[4];
     }
 
     private void Update()
     {
-        if (!gameOver &&!gameWin)
+        if (!gameOver && !gameWin)
         {
             if (playerlives <= 0 && playerA == null)
             {
                 SetGameOver();
             }
 
-            if(enemyCount <= 0 && enemyManager.enemySum <=0)
+            if (enemyCount <= 0 && enemyManager.enemySum <= 0)
             {
                 SetGameWin();
             }
@@ -59,28 +61,37 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // private int EnemyCount()
-    // {
-    //     int count = 0;
-    //     foreach(GameObject g in enemyExist)
-    //     {
-    //         if (g != null)
-    //         count++;
-    //     }
-    //     return count;
-    // }
+
 
     public void SetGameOver()
     {
         Debug.Log("Lose");
         gameOver = true;
         uIManager.GameOver();
+        Invoke("BackMainMenu", 5.0f);
+    }
+
+    private void BackMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    private void NextLevel()
+    {
+        if (transitionManager == null)
+        {
+            transitionManager = GameObject.FindObjectOfType<TransitionManager>();
+        }
+        transitionManager.StartNextLevel(0);
     }
 
     public void SetGameWin()
     {
         Debug.Log("Win");
         gameWin = true;
+        playerlives++;
+        Invoke("NextLevel", 5.0f);
+
     }
     private void Start()
     {
@@ -91,10 +102,19 @@ public class GameManager : MonoBehaviour
     {
         if (playerA == null)
         {
-            Instantiate(tankBirthWrapper, playerABirthPos.position, Quaternion.identity);
-            yield return birthInterval;
-            playerA = Instantiate(PlayerPrefab, playerABirthPos.position, Quaternion.identity);
-            playerlives--;
+            // PlayerController pc = GameObject.FindObjectOfType<PlayerController>();
+            // if (pc != null)
+            // {
+            //     playerA = pc.gameObject;
+            // }
+
+            // else
+            // {
+                Instantiate(tankBirthWrapper, playerABirthPos.position, Quaternion.identity);
+                yield return birthInterval;
+                playerA = Instantiate(PlayerPrefab, playerABirthPos.position, Quaternion.identity);
+                playerlives--;
+            // }
         }
         while (playerlives > 0)
         {
@@ -137,5 +157,5 @@ public class GameManager : MonoBehaviour
     public void DecreaseEnemyCount() => enemyCount--;
 
     public void AddPlayerLives() => playerlives++;
-    
+
 }
