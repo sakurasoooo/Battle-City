@@ -893,6 +893,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Transition Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 1735678613152651468, guid: c85ea4daa2af2f949a513a3ad2783cc7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.6874
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c85ea4daa2af2f949a513a3ad2783cc7, type: 3}
 --- !u!1 &840253393
